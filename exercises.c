@@ -114,10 +114,7 @@ Función que suma los vectores `a` y `b` y
 actualiza el vector `c` con el resultado de la suma.
 */
 void sumaV(Vector * a, Vector * b, Vector * c) {
-   size_t bytesTotales = sizeof(a->datos);
-   size_t byteDeUno = sizeof(a->datos[0]);
-   size_t largoDatos = bytesTotales/byteDeUno;
-   for(size_t i = 0; i < largoDatos; i++){
+   for(size_t i = 0; i < a->capacidad; i++){
       c->datos[i] = a->datos[i] + b->datos[i];
    }
 }
