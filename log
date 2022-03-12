@@ -1,0 +1,22 @@
+Sat Mar 12 16:15:55 HSP 2022: 
+ exercises.c | 36 +++++++++++++++++++++++++++++-------
+ 1 file changed, 29 insertions(+), 7 deletions(-)
+In file included from test.c:5:0:
+exercises.c: In function 'suma':
+exercises.c:16:12: error: 'return' with a value, in function returning void [-Werror]
+     return 0;
+            ^
+exercises.c:14:6: note: declared here
+ void suma(int a, int b, int * c) {
+      ^~~~
+exercises.c: In function 'crearPersona':
+exercises.c:68:11: error: function returns address of local variable [-Werror=return-local-addr]
+    return &people;
+           ^~~~~~~
+exercises.c: In function 'sumaV':
+exercises.c:120:13: error: assignment makes pointer from integer without a cast [-Werror=int-conversion]
+    c->datos = largoDatos;
+             ^
+cc1.exe: all warnings being treated as errors
+Compilation failed
+f03e19a

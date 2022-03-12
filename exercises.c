@@ -12,7 +12,8 @@ y en c almacena el valor de la suma de a más b.
 */
 
 void suma(int a, int b, int * c) {
-    
+    (*c) = a + b;
+    return 0;
 }
 
 /*
@@ -37,7 +38,12 @@ Utilice la función sumaN.
 */
 
 void sumaNultimos(int a[], int n, int m, int * suma) {
+    int i;
+    (*suma) = 0;
 
+    for(i = n; i != n - m; i--) {
+      (*suma) += a[i];
+    }
 }
 
 /*
@@ -55,7 +61,11 @@ typedef struct {
 
 
 Persona* crearPersona(char nombre[], char rut[], int edad) {
-   return NULL;
+   Persona people;
+   strcpy(people.nombre, nombre);
+   strcpy(people.rut, rut);
+   people.edad = edad;
+   return &people;
 }
 
 /*
@@ -72,7 +82,12 @@ typedef struct {
 } Vector;
 
 Vector * crearVector(int n) {
-   return NULL;
+   Vector * arreglo = (Vector*) calloc (n, sizeof(Vector));
+   for(size_t i = 0; i < n; i++){
+      arreglo[i].datos = (int*) calloc (n, sizeof(int));
+      arreglo[i].capacidad = n;
+   }
+   return arreglo;
 }
 
 /*
@@ -81,7 +96,7 @@ Programe la función void asignarValor(Vector * v, int i, int valor),
 la cual asigna el valor a la posición i del vector v.
 */
 void asignarValor(Vector * v, int i, int valor) {
-
+   v->datos[i] = valor;
 }
 
 /*
@@ -90,7 +105,7 @@ Programe la función int obtenerValor(Vector * v, int i),
 la cual retorna el valor en la posición i del vector v.
 */
 int obtenerValor(Vector * v, int i) {
-   return 0;
+   return v->datos[i];
 }
 
 /*
@@ -99,14 +114,21 @@ Función que suma los vectores `a` y `b` y
 actualiza el vector `c` con el resultado de la suma.
 */
 void sumaV(Vector * a, Vector * b, Vector * c) {
-
+   size_t largoDatos = sizeof(a->datos)/sizeof(a->datos[0]);
+   
+   c->datos = (int*) realloc (c->datos, largoDatos * sizeof(int));
+   c->datos = largoDatos;
+   for(size_t j = 0; j < largoDatos; j++){
+      c->datos[j] = a->datos[j] + b->datos[j];
+   }
 }
 
 /*
 Ejercicio 8.
 Use las operaciones implementadas de vectores para 
-sumar (a1,a2)+(b1+b2). Almacene el resultado en el vector c.
+sumar (a1,a2)+(b1,b2). Almacene el resultado en el vector c.
 */
 void sumaV2(int a1, int a2, int b1, int b2, Vector *c){
-
+   c->datos[0] = a1 + b1;
+   c->datos[1] = a2 + b2;
 }
