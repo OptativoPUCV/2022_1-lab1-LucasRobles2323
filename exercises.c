@@ -40,8 +40,10 @@ void sumaNultimos(int a[], int n, int m, int * suma) {
     int i;
     (*suma) = 0;
 
-    for(i = n - 1; i >= m; i--) {
-      (*suma) += a[i];
+    for(i = 0 - 1; i < n; i++){
+      if(i >= m){
+         (*suma) += a[i];
+      }
     }
 }
 
