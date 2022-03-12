@@ -40,7 +40,7 @@ void sumaNultimos(int a[], int n, int m, int * suma) {
     int i;
     (*suma) = 0;
 
-    for(i = n; i != n - m; i--) {
+    for(i = n; i == m; i--) {
       (*suma) += a[i];
     }
 }
@@ -61,12 +61,12 @@ typedef struct {
 
 Persona* crearPersona(char nombre[], char rut[], int edad) {
    Persona people; 
-   Persona *ptrPeople;
+   //Persona *ptrPeople;
    strcpy(people.nombre, nombre);
    strcpy(people.rut, rut);
    people.edad = edad;
-   ptrPeople = &people;
-   return ptrPeople;
+   //ptrPeople = &people;
+   return &people;
 }
 
 /*
@@ -115,12 +115,11 @@ Función que suma los vectores `a` y `b` y
 actualiza el vector `c` con el resultado de la suma.
 */
 void sumaV(Vector * a, Vector * b, Vector * c) {
-   size_t largoDatos = sizeof(a->datos)/sizeof(a->datos[0]);
-   
-   c->datos = (int*) realloc (c->datos, largoDatos * sizeof(int));
-   c->capacidad = largoDatos;
-   for(size_t j = 0; j < largoDatos; j++){
-      c->datos[j] = a->datos[j] + b->datos[j];
+   size_t bytesTotales = sizeof(a->datos);
+   size_t byteDeUno = sizeof(a->datos[0]);
+   size_t largoDatos = bytesTotales/byteDeUno;
+   for(size_t i = 0; i < largoDatos; i++){
+      c->datos[i] = a->datos[i] + b->datos[i];
    }
 }
 
