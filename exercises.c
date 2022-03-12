@@ -13,7 +13,6 @@ y en c almacena el valor de la suma de a más b.
 
 void suma(int a, int b, int * c) {
     (*c) = a + b;
-    return 0;
 }
 
 /*
@@ -61,11 +60,13 @@ typedef struct {
 
 
 Persona* crearPersona(char nombre[], char rut[], int edad) {
-   Persona people;
+   Persona people; 
+   Persona *ptrPeople;
    strcpy(people.nombre, nombre);
    strcpy(people.rut, rut);
    people.edad = edad;
-   return &people;
+   ptrPeople = &people
+   return ptrPeople;
 }
 
 /*
@@ -117,7 +118,7 @@ void sumaV(Vector * a, Vector * b, Vector * c) {
    size_t largoDatos = sizeof(a->datos)/sizeof(a->datos[0]);
    
    c->datos = (int*) realloc (c->datos, largoDatos * sizeof(int));
-   c->datos = largoDatos;
+   c->capacidad = largoDatos;
    for(size_t j = 0; j < largoDatos; j++){
       c->datos[j] = a->datos[j] + b->datos[j];
    }
